@@ -19,6 +19,7 @@ public class SelectMenu : MonoBehaviour
     [SerializeField] Text txtSongName = null;
     [SerializeField] Text txtSongComposer = null;
     [SerializeField] Image imgDisk = null;
+    [SerializeField] Image imgBackground = null;
 
     [SerializeField] GameObject TitleMenu = null;
 
@@ -53,6 +54,7 @@ public class SelectMenu : MonoBehaviour
         txtSongName.text = songList[currentSong].name;
         txtSongComposer.text = songList[currentSong].composer;
         imgDisk.sprite = songList[currentSong].sprite;
+        imgBackground.sprite = songList[currentSong].sprite;
     }
     public void BtnBack()
     {

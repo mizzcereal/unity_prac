@@ -55,6 +55,8 @@ public class SelectMenu : MonoBehaviour
         txtSongComposer.text = songList[currentSong].composer;
         imgDisk.sprite = songList[currentSong].sprite;
         imgBackground.sprite = songList[currentSong].sprite;
+
+        AudioManager.instance.PlayBGM("BGM" + currentSong);
     }
     public void BtnBack()
     {

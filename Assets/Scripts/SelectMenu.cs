@@ -15,13 +15,17 @@ public class Song
 }
 public class SelectMenu : MonoBehaviour
 {
-    [SerializeField] Song[] songList = null;
+    [SerializeField] public Song[] songList = null;
     [SerializeField] Text txtSongName = null;
     [SerializeField] Text txtSongComposer = null;
     [SerializeField] Image imgDisk = null;
     [SerializeField] Image imgBackground = null;
 
     [SerializeField] GameObject TitleMenu = null;
+
+    [SerializeField] GameObject goMusicSheetUI = null;
+
+
 
     int currentSong = 0;
 
@@ -66,6 +70,9 @@ public class SelectMenu : MonoBehaviour
 
     public void BtnPlay()
     {
+        
+        
+        goMusicSheetUI.SetActive(true);
         this.gameObject.SetActive(false);
     }
 }

@@ -23,13 +23,15 @@ public class SelectMenu : MonoBehaviour
 
     [SerializeField] GameObject TitleMenu = null;
 
-    [SerializeField] GameObject goMusicSheetUI = null;
+    [SerializeField] GameObject GoMusicSheet = null;
 
+    public static SelectMenu instance;
 
     int currentSong = 0;
 
     void Start()
     {
+        instance = this;
         SettingSong();
     }
 
@@ -70,16 +72,26 @@ public class SelectMenu : MonoBehaviour
 
     public void BtnPlay()
     {
-        if (MusicSheet.instance != null)
-        {
-            string s_name = songList[currentSong].name;
-            MusicSheet.instance.SongText(s_name);
-            goMusicSheetUI.SetActive(true);
-            this.gameObject.SetActive(false);
-        }
-        else
-        {
-            Debug.LogError("MusicSheet 인스턴스가 null입니다.");
-        }
+        GoMusicSheet.SetActive(true);
+
     }
+
+    // MusicSheet화면에 songText넘기는 함수
+    public string GetSongName()
+    {
+        return songList[currentSong].name;
+    }
+
+    // MusicSheet화면에ComposerText넘기는 함수
+    public string GetComposerName()
+    {
+        return songList[currentSong].composer;
+    }
+
+    public Sprite GetSprite()
+    {
+        return songList[currentSong].sprite;
+    }
+
+
 }

@@ -12,6 +12,8 @@ public class Song
     public int bpm;
 
     public Sprite sprite;
+
+    public Sprite musicSheetSprite;
 }
 public class SelectMenu : MonoBehaviour
 {
@@ -24,6 +26,8 @@ public class SelectMenu : MonoBehaviour
     [SerializeField] GameObject TitleMenu = null;
 
     [SerializeField] GameObject GoMusicSheet = null;
+
+    [SerializeField] Image musicSheetImage = null;
 
     public static SelectMenu instance;
 
@@ -91,6 +95,11 @@ public class SelectMenu : MonoBehaviour
     public Sprite GetSprite()
     {
         return songList[currentSong].sprite;
+    }
+
+    public Sprite GetMusicSheetSprite()
+    {
+        return songList[currentSong].musicSheetSprite;
     }
 
 

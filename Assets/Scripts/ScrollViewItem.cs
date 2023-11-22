@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class SongSelectButton : MonoBehaviour
 {
-    public void Initialize(string buttonText, System.Action<int> onClickCallback)
+    public void Initialize(string buttonText, int index, System.Action<int> onClickCallback)
     {
         // 초기화 코드
         Text buttonTextComponent = GetComponentInChildren<Text>();
@@ -17,7 +17,7 @@ public class SongSelectButton : MonoBehaviour
         Button button = GetComponent<Button>();
         if (button != null)
         {
-            button.onClick.AddListener(() => onClickCallback?.Invoke(GetInstanceID()));
+            button.onClick.AddListener(() => onClickCallback?.Invoke(index));
         }
     }
 }

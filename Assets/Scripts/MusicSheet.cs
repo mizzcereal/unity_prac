@@ -9,6 +9,7 @@ public class MusicSheet : MonoBehaviour
     [SerializeField] Text txtComposerName = null;
 
     [SerializeField] Image backgroundSongImage = null;
+    [SerializeField] Image musicSheetImage = null;
 
     void Start()
     {
@@ -31,8 +32,11 @@ public class MusicSheet : MonoBehaviour
     {
         // SelectMenu에서 현재 노래의 이미지를 가져옵니다.
         Sprite songSprite = SelectMenu.instance.GetSprite();
+        Sprite musicSheetSprite = SelectMenu.instance.GetMusicSheetSprite();
 
         // 가져온 노래 이미지를 backgroundSongImage의 sprite 속성에 할당합니다.
         backgroundSongImage.sprite = songSprite;
+        musicSheetImage.sprite = musicSheetSprite;
+
     }
 }

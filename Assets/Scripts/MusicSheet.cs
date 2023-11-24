@@ -72,21 +72,21 @@ public class MusicSheet : MonoBehaviour
         Debug.Log("가장 큰 measure 번호: " + maxMeasureNumber);
     }
 
-    void Update()
+        void Update()
     {
-        
         measureTime += Time.deltaTime;
 
-        if(bpm == 60)
+        if (bpm == 60)
         {
-            if(measureTime >= 4.0f)
+            if (measureTime >= 4.0f)
             {
                 measureTime = 0f;
                 measure++;
                 Debug.Log("Measure :" + measure);
                 if (measure % 4 == 0) // Check if measure is a multiple of 4
                 {
-                    transform.position += new Vector3(0f, 50f, 0f);
+                    // Move only the music sheet image
+                    musicSheetImage.transform.position += new Vector3(0f, 300f, 0f);
                 }
             }
         }
@@ -99,14 +99,10 @@ public class MusicSheet : MonoBehaviour
                 Debug.Log("Measure: " + measure);
                 if (measure % 4 == 0) // Check if measure is a multiple of 4
                 {
-                    transform.position += new Vector3(0f, 50f, 0f);
+                    // Move only the music sheet image
+                    musicSheetImage.transform.position += new Vector3(0f, 300f, 0f);
                 }
             }
-        }
-
-        if(measure == maxMeasureNumber)
-        {
-            Debug.Log("measure : " + maxMeasureNumber + "에 도착");
         }
         
     }

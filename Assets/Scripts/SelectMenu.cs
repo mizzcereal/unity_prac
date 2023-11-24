@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [System.Serializable]
+// 곡 정보를 저장(이름,작곡가,곡대표이미지, 악보이미지)
 public class Song
 {
     public string name;
@@ -17,6 +18,7 @@ public class Song
 }
 public class SelectMenu : MonoBehaviour
 {
+    // Song class를 songList로 만들고 곡 정보를 직접 넣을 수 있음
     [SerializeField] public Song[] songList = null;
     [SerializeField] Text txtSongName = null;
     [SerializeField] Text txtSongComposer = null;
@@ -36,71 +38,25 @@ public class SelectMenu : MonoBehaviour
     void Start()
     {
         instance = this;
-        SettingSong();
     }
 
-    public void BtnNext()
-    {
-        if (++currentSong > songList.Length - 1)
-        {
-            currentSong = 0;
-            
-        }
-        SettingSong();
-    }
-
-    public void BtnPrior()
-    {
-        if (--currentSong < 0)
-        {
-            currentSong = songList.Length - 1;
-        }
-        SettingSong();
-    }
-
-    void SettingSong()
-    {
-        txtSongName.text = songList[currentSong].name;
-        txtSongComposer.text = songList[currentSong].composer;
-        imgDisk.sprite = songList[currentSong].sprite;
-        imgBackground.sprite = songList[currentSong].sprite;
-
-        AudioManager.instance.PlayBGM("BGM" + currentSong);
-    }
-
-    public void BtnBack()
-    {
-        TitleMenu.SetActive(true);
-        this.gameObject.SetActive(false);
-    }
-
+    //시작 버튼
     public void BtnPlay()
     {
         GoMusicSheet.SetActive(true);
-
     }
 
-    // MusicSheet화면에 songText넘기는 함수
-    public string GetSongName()
+    public void ShowSelectedSongInfo(Song selectedSong)
     {
-        return songList[currentSong].name;
+        txtSongName.text = selectedSong.name;
+        txtSongComposer.text = selectedSong.composer;
+        imgDisk.sprite = selectedSong.sprite;
+        imgBackground.sprite = selectedSong.sprite;
+
+        AudioManager.instance.PlayBGM("BGM" + currentSong);
+
+        // AudioManager 등을 이용하여 추가 작업 수행
     }
 
-    // MusicSheet화면에ComposerText넘기는 함수
-    public string GetComposerName()
-    {
-        return songList[currentSong].composer;
-    }
-
-    public Sprite GetSprite()
-    {
-        return songList[currentSong].sprite;
-    }
-
-    public Sprite GetMusicSheetSprite()
-    {
-        return songList[currentSong].musicSheetSprite;
-    }
-
-
+    
 }

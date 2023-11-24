@@ -5,24 +5,14 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ItemButton : MonoBehaviour, ISelectHandler, IPointerClickHandler, ISubmitHandler
+public class ItemButton : MonoBehaviour, IPointerClickHandler
 {
-    [SerializeField] private Text _itemName;
-    [SerializeField] private ItemButtonEvent _onSelectEvent;
-    [SerializeField] private ItemButtonEvent _onSubmitEvent;
+    [SerializeField] private Text _songName;
+    [SerializeField] private Text _composerName;
+    [SerializeField] private Image _songImage;
     [SerializeField] private ItemButtonEvent _onClickEvent;
-
-    public ItemButtonEvent OnSelectEvent
-    {
-        get => _onSelectEvent;
-        set => _onSelectEvent = value;
-    }
-
-    public ItemButtonEvent OnSubmitEvent
-    {
-        get => _onSubmitEvent;
-        set => _onSubmitEvent = value;
-    }
+    
+    
 
     public ItemButtonEvent OnClickEvent
     {
@@ -30,30 +20,28 @@ public class ItemButton : MonoBehaviour, ISelectHandler, IPointerClickHandler, I
         set => _onClickEvent = value;
     }
 
-    public string ItemNameValue{
-        get => _itemName.text;
-        set => _itemName.text = value;
+    public string songNameValue
+    {
+        get => _songName.text;
+        set => _songName.text = value;
     }
+
+    public string ComposerNameValue
+    {
+        get => _composerName.text;
+        set => _composerName.text = value;
+    }
+
+    public Image SongImage
+    {
+        get => _songImage;
+        set => _songImage = value;
+    }
+
 
     public void OnPointerClick(PointerEventData eventData)
     {
         _onClickEvent.Invoke(this);
-    }
-
-    public void OnSelect(BaseEventData eventData)
-    {
-        _onSelectEvent.Invoke(this);
-    }
-
-    public void OnSubmit(BaseEventData eventData)
-    {
-        _onSubmitEvent.Invoke(this);
-    }
-
-    public void ObtainSelectionFocus()
-    {
-        EventSystem.current.SetSelectedGameObject(this.gameObject);
-        _onSelectEvent.Invoke(this);
     }
 }
 

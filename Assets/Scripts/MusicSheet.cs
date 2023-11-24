@@ -18,6 +18,7 @@ public class MusicSheet : MonoBehaviour
         // gameObject.SetActive(true);
         txtSongName.text = song.name;
         txtComposerName.text = song.composer;
+        backgroundSongImage.sprite = song.sprite;
     }
 
 }

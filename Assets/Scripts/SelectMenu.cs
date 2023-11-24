@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Xml;
 
 [System.Serializable]
 // 곡 정보를 저장(이름,작곡가,곡대표이미지, 악보이미지)
@@ -10,7 +11,7 @@ public class Song
     public string name;
     public string composer;
 
-    public int bpm;
+    public TextAsset musicXMLFile;
 
     public Sprite sprite;
 

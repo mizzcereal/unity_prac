@@ -10,6 +10,7 @@ public class ItemButton : MonoBehaviour, IPointerClickHandler
     [SerializeField] private Text _songName;
     [SerializeField] private Text _composerName;
     [SerializeField] private Image _songImage;
+    [SerializeField] private AudioClip _audioClip;
     [SerializeField] private ItemButtonEvent _onClickEvent;
     
     
@@ -38,10 +39,21 @@ public class ItemButton : MonoBehaviour, IPointerClickHandler
         set => _songImage = value;
     }
 
+    public AudioClip AudioClip
+    {
+        get => _audioClip;
+        set => _audioClip = value;
+    }
+
 
     public void OnPointerClick(PointerEventData eventData)
     {
         _onClickEvent.Invoke(this);
+        if (AudioClip != null)
+        {
+            AudioManager.instance.PlaySelectBGM(AudioClip);
+            AudioManager.instance.StopBGM();
+        }
     }
 }
 

@@ -16,6 +16,7 @@ public class Song
     public Sprite sprite;
 
     public Sprite musicSheetSprite;
+    public AudioClip audioClip;
 }
 public class SelectMenu : MonoBehaviour
 {
@@ -54,7 +55,7 @@ public class SelectMenu : MonoBehaviour
         imgDisk.sprite = selectedSong.sprite;
         imgBackground.sprite = selectedSong.sprite;
 
-        AudioManager.instance.PlayBGM("BGM" + currentSong);
+        // AudioManager.instance.PlayBGM("BGM" + currentSong);
 
         // AudioManager 등을 이용하여 추가 작업 수행
     }

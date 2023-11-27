@@ -67,6 +67,7 @@ public class ScrollViewSample : MonoBehaviour
                 {
                     item.songNameValue = song.name;
                     item.ComposerNameValue = song.composer;
+                    item.AudioClip = song.audioClip;
 
                     if (item.SongImage != null)
                         item.SongImage.sprite = song.sprite;

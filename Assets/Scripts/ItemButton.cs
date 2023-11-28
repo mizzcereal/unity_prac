@@ -52,7 +52,6 @@ public class ItemButton : MonoBehaviour, IPointerClickHandler
         if (AudioClip != null)
         {
             AudioManager.instance.PlaySelectBGM(AudioClip);
-            AudioManager.instance.StopBGM();
         }
     }
 }

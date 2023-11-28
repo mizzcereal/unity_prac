@@ -35,6 +35,8 @@ public class MusicSheet : MonoBehaviour
         {
             Debug.LogError("MusicXML file is not assigned.");
         }
+        AudioManager.instance.StopBGM();
+        AudioManager.instance.PlayBGM(song.audioClip);
     }
 
     // xml파일에서 bpm 및 노트 정보를 가져옴
@@ -76,9 +78,22 @@ public class MusicSheet : MonoBehaviour
     {
         measureTime += Time.deltaTime;
 
+        
+
         if (bpm == 60)
         {
-            if (measureTime >= 4.0f)
+            beat4bpm60();
+        }
+        else if (bpm == 100)
+        {
+            beat4bpm100();
+        }        
+    }
+
+
+    public void beat4bpm60()
+    {
+        if (measureTime >= 4.0f)
             {
                 measureTime = 0f;
                 measure++;
@@ -89,22 +104,21 @@ public class MusicSheet : MonoBehaviour
                     musicSheetImage.transform.position += new Vector3(0f, 300f, 0f);
                 }
             }
-        }
-        else if (bpm == 100) // Condition for bpm == 100
-        {
-            if (measureTime >= 2.4f) // Adjusted condition for bpm == 100
+    }
+
+    public void beat4bpm100()
+    {
+        if (measureTime >= 2.4f)
             {
                 measureTime = 0f;
                 measure++;
-                Debug.Log("Measure: " + measure);
+                Debug.Log("Measure :" + measure);
                 if (measure % 4 == 0) // Check if measure is a multiple of 4
                 {
                     // Move only the music sheet image
                     musicSheetImage.transform.position += new Vector3(0f, 300f, 0f);
                 }
             }
-        }
-        
     }
 
 }

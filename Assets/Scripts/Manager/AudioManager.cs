@@ -37,6 +37,14 @@ public class AudioManager : MonoBehaviour
         bgmPlayer.Play();
     }
 
+    public void PlayBGM(AudioClip clip)
+    {
+        bgmPlayer.clip = clip;
+        bgmPlayer.Play();
+        Debug.Log("BGM is playing: " + clip.name);
+    
+    }
+
     public void StopBGM()
     {
         bgmPlayer.Stop();

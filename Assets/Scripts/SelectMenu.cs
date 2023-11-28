@@ -35,17 +35,16 @@ public class SelectMenu : MonoBehaviour
 
     public static SelectMenu instance;
 
-    int currentSong = 0;
-
     void Start()
     {
         instance = this;
     }
 
     //시작 버튼
-    public void BtnPlay()
+    public void BtnPlay(Song se)
     {
         GoMusicSheet.SetActive(true);
+        this.gameObject.SetActive(false);
     }
 
     public void ShowSelectedSongInfo(Song selectedSong)

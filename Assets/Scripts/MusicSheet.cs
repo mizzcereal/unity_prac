@@ -35,8 +35,6 @@ public class MusicSheet : MonoBehaviour
         {
             Debug.LogError("MusicXML file is not assigned.");
         }
-        AudioManager.instance.StopBGM();
-        AudioManager.instance.PlayBGM(song.audioClip);
     }
 
     // xml파일에서 bpm 및 노트 정보를 가져옴
@@ -77,17 +75,19 @@ public class MusicSheet : MonoBehaviour
         void Update()
     {
         measureTime += Time.deltaTime;
-
-        
-
         if (bpm == 60)
         {
-            beat4bpm60();
+            Invoke("DelayedBeat4Bpm60", 3f);
         }
         else if (bpm == 100)
         {
             beat4bpm100();
         }        
+    }
+
+    void DelayedBeat4Bpm60()
+    {
+        beat4bpm60();
     }
 
 

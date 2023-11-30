@@ -41,10 +41,17 @@ public class SelectMenu : MonoBehaviour
     }
 
     //시작 버튼
-    public void BtnPlay(Song se)
+    public void BtnPlay()
     {
         GoMusicSheet.SetActive(true);
         this.gameObject.SetActive(false);
+        AudioManager.instance.StopBGM(); 
+        Invoke("PlaySelectedBGM", 3f); // 선택한 노래를 처음부터 재생
+    }
+
+    private void PlaySelectedBGM()
+    {
+        AudioManager.instance.ReplayCurrentBGM(); // 선택한 노래를 처음부터 재생
     }
 
     public void ShowSelectedSongInfo(Song selectedSong)
@@ -53,10 +60,6 @@ public class SelectMenu : MonoBehaviour
         txtSongComposer.text = selectedSong.composer;
         imgDisk.sprite = selectedSong.sprite;
         imgBackground.sprite = selectedSong.sprite;
-
-        // AudioManager.instance.PlayBGM("BGM" + currentSong);
-
-        // AudioManager 등을 이용하여 추가 작업 수행
     }
 
     

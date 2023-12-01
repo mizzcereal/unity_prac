@@ -7,11 +7,13 @@ using System.Xml;
 public class MusicSheet : MonoBehaviour
 {
     private int measure = 0;
-    private float measureTime = 0f;
+    public float measureTime = 0f;
     private int maxMeasureNumber = 0;
     private int bpm = 0;
     private bool isPaused = false;
     private Vector3 initialMusicSheetPosition;
+
+    private int maxAttributeNumber = 0;
 
 
     [SerializeField] private SelectMenu selectMenu;
@@ -41,7 +43,7 @@ public class MusicSheet : MonoBehaviour
     }
 
     // xml파일에서 bpm 및 노트 정보를 가져옴
-    void ParseMusicXML(string xmlContent)
+   void ParseMusicXML(string xmlContent)
     {
         XmlDocument xmlDoc = new XmlDocument();
         xmlDoc.LoadXml(xmlContent);
@@ -74,8 +76,9 @@ public class MusicSheet : MonoBehaviour
         }
         Debug.Log("가장 큰 measure 번호: " + maxMeasureNumber);
     }
+    
 
-        void Update()
+    void Update()
     {
         measureTime += Time.deltaTime;
         if (bpm == 60)
@@ -84,8 +87,8 @@ public class MusicSheet : MonoBehaviour
         }
         else if (bpm == 100)
         {
-            beat4bpm100();
-        }        
+            Invoke("DelayedBeat4Bpm100", 3f);
+        }   
     }
 
     void OnEnable()
@@ -94,12 +97,15 @@ public class MusicSheet : MonoBehaviour
         initialMusicSheetPosition = musicSheetImage.transform.position;
     }
 
-
     void DelayedBeat4Bpm60()
     {
         beat4bpm60();
     }
 
+    void DelayedBeat4Bpm100()
+    {
+        beat4bpm100();
+    }
 
     public void beat4bpm60()
     {
@@ -115,6 +121,7 @@ public class MusicSheet : MonoBehaviour
                 }
             }
     }
+
 
     public void beat4bpm100()
     {
@@ -157,4 +164,14 @@ public class MusicSheet : MonoBehaviour
         AudioManager.instance.ResumeBGM(); // BGM 다시 재생
     }
 
+    public void GoSelect()
+    {
+    // 게임 값을 초기화하고 기본 상태로 돌아가기
+    measure = 0;
+    measureTime = 0f;
+    isPaused = false;
+    Time.timeScale = 1f;
+    musicSheetImage.transform.position = initialMusicSheetPosition;
+    AudioManager.instance.StopBGM();  // 노래 정지
+    }
 }

@@ -52,6 +52,7 @@ public class SelectMenu : MonoBehaviour
     private void PlaySelectedBGM()
     {
         AudioManager.instance.ReplayCurrentBGM(); // 선택한 노래를 처음부터 재생
+        FindObjectOfType<MusicSheet>().measureTime = 0f;
     }
 
     public void ShowSelectedSongInfo(Song selectedSong)

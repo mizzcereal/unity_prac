@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class ItemButton : MonoBehaviour, IPointerClickHandler
 {
+    
     [SerializeField] private Text _songName;
     [SerializeField] private Text _composerName;
     [SerializeField] private Image _songImage;

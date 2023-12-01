@@ -34,15 +34,6 @@ public class AudioManager : MonoBehaviour
         bgmPlayer.Play();
     }
 
-    // public void PlayBGM(AudioClip clip)
-    // {
-    //     StopBGM();
-    //     bgmPlayer.clip = clip;
-    //     currentBGM = clip;
-    //     bgmPlayer.Play();
-    //     Debug.Log("BGM is playing: " + clip.name);
-    // }
-
     public void StopBGM()
     {
         bgmPlayer.Stop();
@@ -64,16 +55,16 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-
     public void PauseBGM()
     {
         if (bgmPlayer.isPlaying)
         {
             bgmPlayer.Pause();
         }
-        else
-        {
-            bgmPlayer.UnPause();
-        }
+    }
+
+    public void ResumeBGM()
+    {
+        bgmPlayer.UnPause(); // BGM 재개
     }
 }

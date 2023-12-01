@@ -148,5 +148,13 @@ public class MusicSheet : MonoBehaviour
         musicSheetImage.transform.position = initialMusicSheetPosition;
         AudioManager.instance.RestartBGM();
     }
+    
+    public void ResumePlaying()
+    {
+        isPaused = false; // 게임 일시정지 상태 종료
+        goPauseUi.SetActive(false); // 일시정지 UI 비활성화
+        Time.timeScale = 1f; // 게임 재개
+        AudioManager.instance.ResumeBGM(); // BGM 다시 재생
+    }
 
 }

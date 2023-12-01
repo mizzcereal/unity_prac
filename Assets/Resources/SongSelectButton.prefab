@@ -230,6 +230,7 @@ MonoBehaviour:
   _songName: {fileID: 7740310601239977490}
   _composerName: {fileID: 698161628105256416}
   _songImage: {fileID: 0}
+  _audioClip: {fileID: 0}
   _onClickEvent:
     m_PersistentCalls:
       m_Calls: []

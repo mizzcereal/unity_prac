@@ -55,4 +55,25 @@ public class AudioManager : MonoBehaviour
             PlaySelectBGM(currentBGM);
         }
     }
+
+    public void RestartBGM()
+    {
+        if (currentBGM != null)
+        {
+            PlaySelectBGM(currentBGM);
+        }
+    }
+
+
+    public void PauseBGM()
+    {
+        if (bgmPlayer.isPlaying)
+        {
+            bgmPlayer.Pause();
+        }
+        else
+        {
+            bgmPlayer.UnPause();
+        }
+    }
 }

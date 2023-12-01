@@ -10,6 +10,8 @@ public class MusicSheet : MonoBehaviour
     private float measureTime = 0f;
     private int maxMeasureNumber = 0;
     private int bpm = 0;
+    private bool isPaused = false;
+    private Vector3 initialMusicSheetPosition;
 
 
     [SerializeField] private SelectMenu selectMenu;
@@ -19,6 +21,7 @@ public class MusicSheet : MonoBehaviour
 
     [SerializeField] Image backgroundSongImage = null;
     [SerializeField] Image musicSheetImage = null;
+    [SerializeField] GameObject goPauseUi = null;
 
     public void ShowMusicSheetSongInfo(Song song)
     {
@@ -85,6 +88,13 @@ public class MusicSheet : MonoBehaviour
         }        
     }
 
+    void OnEnable()
+    {
+        // 초기 위치를 저장
+        initialMusicSheetPosition = musicSheetImage.transform.position;
+    }
+
+
     void DelayedBeat4Bpm60()
     {
         beat4bpm60();
@@ -119,6 +129,24 @@ public class MusicSheet : MonoBehaviour
                     musicSheetImage.transform.position += new Vector3(0f, 300f, 0f);
                 }
             }
+    }
+
+    public void PauseButton()
+    {
+        isPaused = true; // 게임 일시정지 상태로 변경
+        goPauseUi.SetActive(true); 
+        Time.timeScale = 0f; // 게임 일시정지
+        AudioManager.instance.PauseBGM();
+    }
+
+    public void Restart()
+    {
+        measure = 0;
+        measureTime = 0f;
+        isPaused = false;
+        Time.timeScale = 1f;
+        musicSheetImage.transform.position = initialMusicSheetPosition;
+        AudioManager.instance.RestartBGM();
     }
 
 }

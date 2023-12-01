@@ -46,14 +46,18 @@ public class ItemButton : MonoBehaviour, IPointerClickHandler
     }
 
 
-    public void OnPointerClick(PointerEventData eventData)
+   public void OnPointerClick(PointerEventData eventData)
+{
+    if (_onClickEvent != null)
     {
         _onClickEvent.Invoke(this);
-        if (AudioClip != null)
-        {
-            AudioManager.instance.PlaySelectBGM(AudioClip);
-        }
     }
+
+    if (AudioClip != null)
+    {
+        AudioManager.instance.PlaySelectBGM(AudioClip);
+    }
+}
 }
 
 [System.Serializable]

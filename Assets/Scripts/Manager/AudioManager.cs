@@ -68,8 +68,5 @@ public class AudioManager : MonoBehaviour
         bgmPlayer.UnPause(); // BGM 재개
     }
 
-    public bool IsBGMPlaying()
-    {
-        return bgmPlayer.isPlaying;
-    }
+
 }

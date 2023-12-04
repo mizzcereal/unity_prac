@@ -20,8 +20,7 @@ public class MusicSheet : MonoBehaviour
 
     private int maxAttributeNumber = 0;
     private float noteSpeed;
-    
-
+    private Song song;
 
     [SerializeField] private SelectMenu selectMenu;
 
@@ -36,10 +35,18 @@ public class MusicSheet : MonoBehaviour
     public void ShowMusicSheetSongInfo(Song song)
     {
         // gameObject.SetActive(true);
+        this.song = song;
         txtSongName.text = song.name;
         txtComposerName.text = song.composer;
         backgroundSongImage.sprite = song.sprite;
-        musicSheetImage.sprite = song.musicSheetSprite;
+        if (measure < 4)
+        {
+            musicSheetImage.sprite = song.musicSheetSprite;
+        }
+        else
+        {
+            musicSheetImage.sprite = song.musicSheetSprite2;
+        }
         if (song.musicXMLFile != null)
         {
             ParseMusicXML(song.musicXMLFile.text);
@@ -96,6 +103,8 @@ public class MusicSheet : MonoBehaviour
         Debug.Log("가장 큰 measure 번호: " + maxMeasureNumber);
     }
 
+    
+
     void Update()
     {
         measureTime += Time.deltaTime;
@@ -107,9 +116,18 @@ public class MusicSheet : MonoBehaviour
         {
             Invoke("DelayedBeat4Bpm100", 3f);
         }
-
-        // 노트 이동 메서드 호출
-        MoveNote();
+        else if(bpm == 92)
+        {
+            Invoke("DelayedBeat4Bpm92", 3f);
+        }
+    //     if (measure < 32)
+    // {
+    //     musicSheetImage.sprite = song.musicSheetSprite;  // Set the sprite for the first music sheet image
+    // }
+    // else
+    // {
+    //     musicSheetImage.sprite = song.musicSheetSprite2;  // Set the sprite for the second music sheet image
+    // }
     }
 
     void OnEnable()
@@ -122,12 +140,20 @@ public class MusicSheet : MonoBehaviour
 
     void DelayedBeat4Bpm60()
     {
+        MoveNote();
         beat4bpm60();
     }
 
     void DelayedBeat4Bpm100()
     {
+        MoveNote();
         beat4bpm100();
+    }
+
+    void DelayedBeat4Bpm92()
+    {
+        MoveNote();
+        beat4bpm92();
     }
 
     public void beat4bpm60()
@@ -160,6 +186,27 @@ public class MusicSheet : MonoBehaviour
         }
     }
 
+        public void beat4bpm92()
+    {
+           if (measure >= 4)
+        {
+            musicSheetImage.sprite = song.musicSheetSprite2;
+            musicSheetImage.enabled = false; // 기존 이미지를 비활성화
+        }
+        if (measureTime >= 2.61f)
+        {
+            measureTime = 0f;
+            measure++;
+            Debug.Log("Measure :" + measure);
+            if (measure % 4 == 0) // Check if measure is a multiple of 4
+            {
+                // Move only the music sheet image
+                musicSheetImage.transform.position += new Vector3(0f, 300f, 0f);
+            }
+        }
+    }
+
+
     public void MoveNote()
     {
         if (isNoteMoving)
@@ -169,7 +216,7 @@ public class MusicSheet : MonoBehaviour
             // 노트를 이동합니다.
             noteRectTransform.localPosition += Vector3.right * noteSpeed * 10f * Time.deltaTime;
 
-            Debug.Log("Note Speed: " + noteSpeed);
+            // Debug.Log("Note Speed: " + noteSpeed);
         }
     }
 
@@ -217,4 +264,18 @@ public class MusicSheet : MonoBehaviour
         noteRectTransform.localPosition = initialNotePosition;
         AudioManager.instance.StopBGM();  // 노래 정지
     }
+
+    // void ShowMusicSheetImage()
+    // {
+    //     musicSheetImage.gameObject.SetActive(true);
+    //     // Add logic to hide musicSheetImage2 if it's currently active
+    //     musicSheetImage2.gameObject.SetActive(false);
+    // }
+
+    // void ShowMusicSheetImage2()
+    // {
+    //     // Add logic to hide musicSheetImage if it's currently active
+    //     musicSheetImage.gameObject.SetActive(false);
+    //     musicSheetImage2.gameObject.SetActive(true);
+    // }
 }

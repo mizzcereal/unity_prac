@@ -3872,24 +3872,28 @@ MonoBehaviour:
     musicXMLFile: {fileID: 0}
     sprite: {fileID: 21300000, guid: 329b13a293af54a48853ce485d0d6260, type: 3}
     musicSheetSprite: {fileID: 0}
+    musicSheetSprite2: {fileID: 0}
     audioClip: {fileID: 0}
   - name: "\uD560\uC544\uBC84\uC9C0\uC758\uB0A1\uC740\uC2DC\uACC4"
     composer: "\uD5E8\uB9AC \uD074\uB808\uC774 \uC6CC\uD06C"
     musicXMLFile: {fileID: 4900000, guid: 57514e91d1ff87f4ba9586b7fe763674, type: 3}
     sprite: {fileID: 21300000, guid: 7eaa9bdf354958d4cb3f04f3aabf9244, type: 3}
     musicSheetSprite: {fileID: 21300000, guid: e7e34ef9f8f5f4a409f641fe7362fed2, type: 3}
+    musicSheetSprite2: {fileID: 0}
     audioClip: {fileID: 8300000, guid: 8428fcd0524056e41a37ba45039e83e8, type: 3}
   - name: "\uACE0\uD5A5\uC758\uBD04"
     composer: "\uC774\uC6D0\uC218"
     musicXMLFile: {fileID: 4900000, guid: 44d3e64be18344d4a90b32b414a87836, type: 3}
     sprite: {fileID: 21300000, guid: bbfe0d6f965ad5a45bcd87d2a4b93e2d, type: 3}
     musicSheetSprite: {fileID: 21300000, guid: a4a26ddd080ee7e46adb8e71a3de2f04, type: 3}
+    musicSheetSprite2: {fileID: 0}
     audioClip: {fileID: 8300000, guid: 6baee3f07d96df44dae3c59a3cda9fde, type: 3}
   - name: "\uD14C\uC2A4\uD2B81"
     composer: "\uC774\uC0C1\uC6B1"
     musicXMLFile: {fileID: 0}
     sprite: {fileID: 21300000, guid: bbfe0d6f965ad5a45bcd87d2a4b93e2d, type: 3}
     musicSheetSprite: {fileID: 21300000, guid: 24cc8b56c137a6a49ba0d6074b0a0d9c, type: 3}
+    musicSheetSprite2: {fileID: 0}
     audioClip: {fileID: 0}
   txtSongName: {fileID: 2063274703}
   txtSongComposer: {fileID: 755736120}
@@ -4357,6 +4361,8 @@ MonoBehaviour:
   txtComposerName: {fileID: 1133473664}
   backgroundSongImage: {fileID: 959325812}
   musicSheetImage: {fileID: 1966968677}
+  musicSheetImage2: {fileID: 0}
+  switchToImage2Measure: 32
   goPauseUi: {fileID: 1455574923}
   note: {fileID: 623350131}
 --- !u!1 &816166061
@@ -5605,24 +5611,28 @@ MonoBehaviour:
     musicXMLFile: {fileID: 0}
     sprite: {fileID: 21300000, guid: 329b13a293af54a48853ce485d0d6260, type: 3}
     musicSheetSprite: {fileID: 0}
+    musicSheetSprite2: {fileID: 0}
     audioClip: {fileID: 0}
   - name: "\uD560\uC544\uBC84\uC9C0\uC758\uB0A1\uC740\uC2DC\uACC4"
     composer: "\uD5E8\uB9AC \uD074\uB808\uC774 \uC6CC\uD06C"
     musicXMLFile: {fileID: 4900000, guid: 57514e91d1ff87f4ba9586b7fe763674, type: 3}
     sprite: {fileID: 21300000, guid: 7eaa9bdf354958d4cb3f04f3aabf9244, type: 3}
     musicSheetSprite: {fileID: 21300000, guid: e7e34ef9f8f5f4a409f641fe7362fed2, type: 3}
+    musicSheetSprite2: {fileID: 0}
     audioClip: {fileID: 8300000, guid: 8428fcd0524056e41a37ba45039e83e8, type: 3}
   - name: "\uACE0\uD5A5\uC758\uBD04"
     composer: "\uC774\uC6D0\uC218"
     musicXMLFile: {fileID: 4900000, guid: 44d3e64be18344d4a90b32b414a87836, type: 3}
     sprite: {fileID: 21300000, guid: bbfe0d6f965ad5a45bcd87d2a4b93e2d, type: 3}
     musicSheetSprite: {fileID: 21300000, guid: a4a26ddd080ee7e46adb8e71a3de2f04, type: 3}
+    musicSheetSprite2: {fileID: 0}
     audioClip: {fileID: 8300000, guid: 6baee3f07d96df44dae3c59a3cda9fde, type: 3}
   - name: "\uD14C\uC2A4\uD2B81"
     composer: "\uC774\uC0C1\uC6B1"
     musicXMLFile: {fileID: 0}
     sprite: {fileID: 21300000, guid: bbfe0d6f965ad5a45bcd87d2a4b93e2d, type: 3}
     musicSheetSprite: {fileID: 21300000, guid: 24cc8b56c137a6a49ba0d6074b0a0d9c, type: 3}
+    musicSheetSprite2: {fileID: 0}
     audioClip: {fileID: 0}
   txtSongName: {fileID: 317838519}
   txtSongComposer: {fileID: 1477011378}
@@ -9888,27 +9898,31 @@ MonoBehaviour:
   songList:
   - name: "\uC0AC\uB791\uC744 \uD588\uB2E4"
     composer: iKON
-    musicXMLFile: {fileID: 0}
+    musicXMLFile: {fileID: 4900000, guid: c2a452a8e4362504590ea79fdf857b14, type: 3}
     sprite: {fileID: 21300000, guid: 1119b820599a32d4381c1049c1678847, type: 3}
-    musicSheetSprite: {fileID: 0}
-    audioClip: {fileID: 0}
+    musicSheetSprite: {fileID: 21300000, guid: ddd4477ff63ec4948b3c873b06f22635, type: 3}
+    musicSheetSprite2: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 755d6a24176f8fd479de98860f87c5ad, type: 3}
   - name: "\uD560\uC544\uBC84\uC9C0\uC758\uB0A1\uC740\uC2DC\uACC4"
     composer: "\uD5E8\uB9AC \uD074\uB808\uC774 \uC6CC\uD06C"
     musicXMLFile: {fileID: 4900000, guid: 57514e91d1ff87f4ba9586b7fe763674, type: 3}
     sprite: {fileID: 21300000, guid: 7eaa9bdf354958d4cb3f04f3aabf9244, type: 3}
     musicSheetSprite: {fileID: 21300000, guid: e7e34ef9f8f5f4a409f641fe7362fed2, type: 3}
+    musicSheetSprite2: {fileID: 0}
     audioClip: {fileID: 8300000, guid: 8428fcd0524056e41a37ba45039e83e8, type: 3}
   - name: "\uACE0\uD5A5\uC758\uBD04"
     composer: "\uC774\uC6D0\uC218"
     musicXMLFile: {fileID: 4900000, guid: 44d3e64be18344d4a90b32b414a87836, type: 3}
     sprite: {fileID: 21300000, guid: bbfe0d6f965ad5a45bcd87d2a4b93e2d, type: 3}
     musicSheetSprite: {fileID: 21300000, guid: a4a26ddd080ee7e46adb8e71a3de2f04, type: 3}
+    musicSheetSprite2: {fileID: 0}
     audioClip: {fileID: 8300000, guid: 6baee3f07d96df44dae3c59a3cda9fde, type: 3}
   - name: "\uD14C\uC2A4\uD2B81"
     composer: "\uC774\uC0C1\uC6B1"
     musicXMLFile: {fileID: 0}
     sprite: {fileID: 21300000, guid: bbfe0d6f965ad5a45bcd87d2a4b93e2d, type: 3}
     musicSheetSprite: {fileID: 21300000, guid: 24cc8b56c137a6a49ba0d6074b0a0d9c, type: 3}
+    musicSheetSprite2: {fileID: 0}
     audioClip: {fileID: 0}
   txtSongName: {fileID: 2100484501}
   txtSongComposer: {fileID: 1521564431}
@@ -11320,24 +11334,28 @@ MonoBehaviour:
     musicXMLFile: {fileID: 0}
     sprite: {fileID: 21300000, guid: 329b13a293af54a48853ce485d0d6260, type: 3}
     musicSheetSprite: {fileID: 0}
+    musicSheetSprite2: {fileID: 0}
     audioClip: {fileID: 0}
   - name: "\uD560\uC544\uBC84\uC9C0\uC758\uB0A1\uC740\uC2DC\uACC4"
     composer: "\uD5E8\uB9AC \uD074\uB808\uC774 \uC6CC\uD06C"
     musicXMLFile: {fileID: 4900000, guid: 57514e91d1ff87f4ba9586b7fe763674, type: 3}
     sprite: {fileID: 21300000, guid: 7eaa9bdf354958d4cb3f04f3aabf9244, type: 3}
     musicSheetSprite: {fileID: 21300000, guid: e7e34ef9f8f5f4a409f641fe7362fed2, type: 3}
+    musicSheetSprite2: {fileID: 0}
     audioClip: {fileID: 8300000, guid: 8428fcd0524056e41a37ba45039e83e8, type: 3}
   - name: "\uACE0\uD5A5\uC758\uBD04"
     composer: "\uC774\uC6D0\uC218"
     musicXMLFile: {fileID: 4900000, guid: 44d3e64be18344d4a90b32b414a87836, type: 3}
     sprite: {fileID: 21300000, guid: bbfe0d6f965ad5a45bcd87d2a4b93e2d, type: 3}
     musicSheetSprite: {fileID: 21300000, guid: a4a26ddd080ee7e46adb8e71a3de2f04, type: 3}
+    musicSheetSprite2: {fileID: 0}
     audioClip: {fileID: 8300000, guid: 6baee3f07d96df44dae3c59a3cda9fde, type: 3}
   - name: "\uD14C\uC2A4\uD2B81"
     composer: "\uC774\uC0C1\uC6B1"
     musicXMLFile: {fileID: 0}
     sprite: {fileID: 21300000, guid: bbfe0d6f965ad5a45bcd87d2a4b93e2d, type: 3}
     musicSheetSprite: {fileID: 21300000, guid: 24cc8b56c137a6a49ba0d6074b0a0d9c, type: 3}
+    musicSheetSprite2: {fileID: 0}
     audioClip: {fileID: 0}
   txtSongName: {fileID: 645273195}
   txtSongComposer: {fileID: 351798922}

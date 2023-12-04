@@ -12,15 +12,14 @@ public class MusicSheet : MonoBehaviour
     private int bpm = 0;
     private bool isPaused = false;
     private bool isNoteMoving = true;
-
-    //악보 초기 위치를 저장하는 변수
-    private Vector3 initialMusicSheetPosition;
-    //노트 초기 위치를 저장하는 변수
-    private Vector3 initialNotePosition;
+    private Vector3 initialMusicSheetPosition; //악보 초기 위치를 저장하는 변수
+    private Vector3 initialMusicSheetPosition2; //악보 초기 위치를 저장하는 변수
+    private Vector3 initialNotePosition; //노트 초기 위치를 저장하는 변수
 
     private int maxAttributeNumber = 0;
     private float noteSpeed;
     private Song song;
+    private int currentSheetIndex = 0;
 
     [SerializeField] private SelectMenu selectMenu;
 
@@ -29,24 +28,19 @@ public class MusicSheet : MonoBehaviour
 
     [SerializeField] Image backgroundSongImage = null;
     [SerializeField] Image musicSheetImage = null;
+    [SerializeField] Image musicSheetImage2 = null;
     [SerializeField] GameObject goPauseUi = null;
     [SerializeField] Image note = null;
 
     public void ShowMusicSheetSongInfo(Song song)
     {
-        // gameObject.SetActive(true);
         this.song = song;
         txtSongName.text = song.name;
         txtComposerName.text = song.composer;
         backgroundSongImage.sprite = song.sprite;
-        if (measure < 4)
-        {
-            musicSheetImage.sprite = song.musicSheetSprite;
-        }
-        else
-        {
-            musicSheetImage.sprite = song.musicSheetSprite2;
-        }
+        musicSheetImage.sprite = song.musicSheetSprite;
+        musicSheetImage2.sprite = song.musicSheetSprite2;
+        musicSheetImage2.gameObject.SetActive(false);
         if (song.musicXMLFile != null)
         {
             ParseMusicXML(song.musicXMLFile.text);
@@ -120,20 +114,13 @@ public class MusicSheet : MonoBehaviour
         {
             Invoke("DelayedBeat4Bpm92", 3f);
         }
-    //     if (measure < 32)
-    // {
-    //     musicSheetImage.sprite = song.musicSheetSprite;  // Set the sprite for the first music sheet image
-    // }
-    // else
-    // {
-    //     musicSheetImage.sprite = song.musicSheetSprite2;  // Set the sprite for the second music sheet image
-    // }
     }
 
     void OnEnable()
     {
         // 초기 위치를 저장
         initialMusicSheetPosition = musicSheetImage.transform.position;
+        initialMusicSheetPosition2 = musicSheetImage2.transform.position;
 
         initialNotePosition = note.rectTransform.localPosition;
     }
@@ -158,15 +145,22 @@ public class MusicSheet : MonoBehaviour
 
     public void beat4bpm60()
     {
-        if (measureTime >= 4.0f)
         {
             measureTime = 0f;
             measure++;
             Debug.Log("Measure :" + measure);
-            if (measure % 4 == 0) // Check if measure is a multiple of 4
+            if (measure == 32 && musicSheetImage2.sprite != null)
             {
-                // Move only the music sheet image
+                musicSheetImage.gameObject.SetActive(false);
+                musicSheetImage2.gameObject.SetActive(true);
+                ResetNotePosition();
+                musicSheetImage2.transform.position = initialMusicSheetPosition2;
+            }
+            if (measure % 4 == 0 && measure != 8) // Check if measure is a multiple of 4
+            {
                 musicSheetImage.transform.position += new Vector3(0f, 300f, 0f);
+                musicSheetImage2.transform.position += new Vector3(0f, 300f, 0f);
+                ResetNotePosition();
             }
         }
     }
@@ -178,30 +172,41 @@ public class MusicSheet : MonoBehaviour
             measureTime = 0f;
             measure++;
             Debug.Log("Measure :" + measure);
-            if (measure % 4 == 0) // Check if measure is a multiple of 4
+            if (measure == 8 && musicSheetImage2.sprite != null)
             {
-                // Move only the music sheet image
+                musicSheetImage.gameObject.SetActive(false);
+                musicSheetImage2.gameObject.SetActive(true);
+                ResetNotePosition();
+                musicSheetImage2.transform.position = initialMusicSheetPosition2;
+            }
+            if (measure % 4 == 0 && measure != 8) // Check if measure is a multiple of 4
+            {
                 musicSheetImage.transform.position += new Vector3(0f, 300f, 0f);
+                musicSheetImage2.transform.position += new Vector3(0f, 300f, 0f);
+                ResetNotePosition();
             }
         }
     }
 
-        public void beat4bpm92()
+    public void beat4bpm92()
     {
-           if (measure >= 4)
-        {
-            musicSheetImage.sprite = song.musicSheetSprite2;
-            musicSheetImage.enabled = false; // 기존 이미지를 비활성화
-        }
         if (measureTime >= 2.61f)
         {
             measureTime = 0f;
             measure++;
             Debug.Log("Measure :" + measure);
-            if (measure % 4 == 0) // Check if measure is a multiple of 4
+            if (measure == 8 && musicSheetImage2.sprite != null)
             {
-                // Move only the music sheet image
+                musicSheetImage.gameObject.SetActive(false);
+                musicSheetImage2.gameObject.SetActive(true);
+                ResetNotePosition();
+                musicSheetImage2.transform.position = initialMusicSheetPosition2;
+            }
+            if (measure % 4 == 0 && measure != 8) // Check if measure is a multiple of 4
+            {
                 musicSheetImage.transform.position += new Vector3(0f, 300f, 0f);
+                musicSheetImage2.transform.position += new Vector3(0f, 300f, 0f);
+                ResetNotePosition();
             }
         }
     }
@@ -265,17 +270,10 @@ public class MusicSheet : MonoBehaviour
         AudioManager.instance.StopBGM();  // 노래 정지
     }
 
-    // void ShowMusicSheetImage()
-    // {
-    //     musicSheetImage.gameObject.SetActive(true);
-    //     // Add logic to hide musicSheetImage2 if it's currently active
-    //     musicSheetImage2.gameObject.SetActive(false);
-    // }
-
-    // void ShowMusicSheetImage2()
-    // {
-    //     // Add logic to hide musicSheetImage if it's currently active
-    //     musicSheetImage.gameObject.SetActive(false);
-    //     musicSheetImage2.gameObject.SetActive(true);
-    // }
+    private void ResetNotePosition()
+{
+    RectTransform noteRectTransform = note.rectTransform;
+    // 노트를 초기 위치로 되돌립니다.
+    noteRectTransform.localPosition = initialNotePosition;
+}
 }

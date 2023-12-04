@@ -32,6 +32,7 @@ public class AudioManager : MonoBehaviour
         bgmPlayer.clip = clip;
         currentBGM = clip; // 현재 재생 중인 BGM 갱신
         bgmPlayer.Play();
+        StartCoroutine(DisableMusicSheetAfterBGMEnds(clip.length));
     }
 
     public void StopBGM()
@@ -66,6 +67,19 @@ public class AudioManager : MonoBehaviour
     public void ResumeBGM()
     {
         bgmPlayer.UnPause(); // BGM 재개
+    }
+    
+    private IEnumerator DisableMusicSheetAfterBGMEnds(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+
+        // BGM이 끝나면 MusicSheet를 비활성화
+        // 여기에 MusicSheet 게임 오브젝트를 찾아서 비활성화하는 코드를 넣으세요.
+        MusicSheet musicSheet = FindObjectOfType<MusicSheet>();
+        if (musicSheet != null)
+        {
+            musicSheet.gameObject.SetActive(false);
+        }
     }
 
 

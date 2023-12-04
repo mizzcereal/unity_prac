@@ -14,7 +14,6 @@ public class Song
     public TextAsset musicXMLFile;
 
     public Sprite sprite;
-
     public Sprite musicSheetSprite;
     public Sprite musicSheetSprite2;
     public AudioClip audioClip;
@@ -33,8 +32,6 @@ public class SelectMenu : MonoBehaviour
     [SerializeField] GameObject GoMusicSheet = null;
 
     [SerializeField] Image musicSheetImage = null;
-
-    [SerializeField] Image musicSheetImage2 = null;
 
     public static SelectMenu instance;
 

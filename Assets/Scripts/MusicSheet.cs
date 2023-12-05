@@ -52,7 +52,7 @@ public class MusicSheet : MonoBehaviour
     }
 
     // xml파일에서 bpm 및 노트 정보를 가져옴
-   void ParseMusicXML(string xmlContent)
+    void ParseMusicXML(string xmlContent)
     {
         XmlDocument xmlDoc = new XmlDocument();
         xmlDoc.LoadXml(xmlContent);
@@ -65,37 +65,44 @@ public class MusicSheet : MonoBehaviour
 
             Debug.Log("BPM: " + this.bpm + " (beat unit: " + beatUnit + ")");
 
-            // noteSpeed 계산
-            if (bpm > 0)
-            {
-                float beatsPerSecond = bpm / 60f; // 분당 박자 수를 초당 박자 수로 변환
-                noteSpeed = beatsPerSecond * 10f; // 상수를 조절하여 노트 이동 속도를 조절
-            }
-            else
-            {
-                Debug.LogError("BPM 정보가 유효하지 않습니다.");
-            }
+        if (bpm > 0)
+        {
+            float beatsPerSecond = bpm / 60f; // 분당 박자 수를 초당 박자 수로 변환
+            noteSpeed = beatsPerSecond * 10f; // 상수를 조절하여 노트 이동 속도를 조절
         }
         else
         {
-            Debug.LogError("bpm정보가 없습니다.");
+            Debug.LogError("BPM 정보가 유효하지 않습니다.");
         }
+    }
+    else
+    {
+        Debug.LogError("bpm정보가 없습니다.");
+    }
 
-        XmlNodeList readMeasureNumber = xmlDoc.SelectNodes("//measure");
-        foreach (XmlNode measureNode in readMeasureNumber)
+    XmlNodeList readMeasureNumber = xmlDoc.SelectNodes("//measure");
+    foreach (XmlNode measureNode in readMeasureNumber)
+    {
+        XmlAttribute attribute = measureNode.Attributes["number"];
+        if (attribute != null)
         {
-            XmlAttribute attribute = measureNode.Attributes["number"];
-            if (attribute != null)
+            int measureNumber;
+            if (int.TryParse(attribute.Value, out measureNumber))
             {
-                int measureNumber;
-                if (int.TryParse(attribute.Value, out measureNumber))
-                {
-                    maxMeasureNumber = Mathf.Max(maxMeasureNumber, measureNumber);
-                }
+                maxMeasureNumber = Mathf.Max(maxMeasureNumber, measureNumber);
             }
         }
-        Debug.Log("가장 큰 measure 번호: " + maxMeasureNumber);
+    XmlNode timeNode = measureNode.SelectSingleNode(".//time");
+        if (timeNode != null)
+        {
+            string beats = timeNode.SelectSingleNode("beats")?.InnerText;
+            string beatType = timeNode.SelectSingleNode("beat-type")?.InnerText;
+            Debug.Log("Measure " + attribute.Value + ": Beats - " + beats + ", Beat Type - " + beatType);
+        }
     }
+    Debug.Log("가장 큰 measure 번호: " + maxMeasureNumber);
+    }
+
 
     
 
@@ -172,17 +179,16 @@ public class MusicSheet : MonoBehaviour
             measureTime = 0f;
             measure++;
             Debug.Log("Measure :" + measure);
-            if (measure == 8 && musicSheetImage2.sprite != null)
+            if (measure == 32 && musicSheetImage2.sprite != null)
             {
                 musicSheetImage.gameObject.SetActive(false);
                 musicSheetImage2.gameObject.SetActive(true);
                 ResetNotePosition();
                 musicSheetImage2.transform.position = initialMusicSheetPosition2;
             }
-            if (measure % 4 == 0 && measure != 8) // Check if measure is a multiple of 4
+            if (measure % 4 == 0 && measure != 32) // Check if measure is a multiple of 4
             {
                 musicSheetImage.transform.position += new Vector3(0f, 300f, 0f);
-                musicSheetImage2.transform.position += new Vector3(0f, 300f, 0f);
                 ResetNotePosition();
             }
         }
@@ -195,14 +201,14 @@ public class MusicSheet : MonoBehaviour
             measureTime = 0f;
             measure++;
             Debug.Log("Measure :" + measure);
-            if (measure == 8 && musicSheetImage2.sprite != null)
+            if (measure == 32 && musicSheetImage2.sprite != null)
             {
                 musicSheetImage.gameObject.SetActive(false);
                 musicSheetImage2.gameObject.SetActive(true);
                 ResetNotePosition();
                 musicSheetImage2.transform.position = initialMusicSheetPosition2;
             }
-            if (measure % 4 == 0 && measure != 8) // Check if measure is a multiple of 4
+            if (measure % 4 == 0 && measure != 32) // Check if measure is a multiple of 4
             {
                 musicSheetImage.transform.position += new Vector3(0f, 300f, 0f);
                 musicSheetImage2.transform.position += new Vector3(0f, 300f, 0f);

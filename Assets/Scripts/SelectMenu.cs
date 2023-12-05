@@ -21,16 +21,14 @@ public class Song
 public class SelectMenu : MonoBehaviour
 {
     // Song class를 songList로 만들고 곡 정보를 직접 넣을 수 있음
+    [SerializeField] private MusicSheet musicSheet = null;
     [SerializeField] public Song[] songList = null;
     [SerializeField] Text txtSongName = null;
     [SerializeField] Text txtSongComposer = null;
     [SerializeField] Image imgDisk = null;
     [SerializeField] Image imgBackground = null;
-
-    [SerializeField] GameObject TitleMenu = null;
-
+    [SerializeField] GameObject goGenreSelect = null;
     [SerializeField] GameObject GoMusicSheet = null;
-
     [SerializeField] Image musicSheetImage = null;
 
     public static SelectMenu instance;
@@ -44,9 +42,16 @@ public class SelectMenu : MonoBehaviour
     public void BtnPlay()
     {
         GoMusicSheet.SetActive(true);
-        this.gameObject.SetActive(false);
         AudioManager.instance.StopBGM(); 
+        Invoke("EnableNoteMoving", 3f);
         Invoke("PlaySelectedBGM", 3f); // 선택한 노래를 처음부터 재생
+    }
+
+    public void BtnBack()
+    {
+        this.gameObject.SetActive(false);
+        AudioManager.instance.StopBGM();
+        goGenreSelect.SetActive(true);
     }
 
     private void PlaySelectedBGM()
@@ -63,5 +68,9 @@ public class SelectMenu : MonoBehaviour
         imgBackground.sprite = selectedSong.sprite;
     }
 
+    private void EnableNoteMoving()
+    {
+        musicSheet.isNoteMoving = true;
+    }
     
 }

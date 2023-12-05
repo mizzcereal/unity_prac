@@ -21,6 +21,8 @@ public class AudioManager : MonoBehaviour
 
     private AudioClip currentBGM;
 
+    private Coroutine disableCoroutine;
+
     void Start()
     {
         instance = this;
@@ -41,12 +43,13 @@ public class AudioManager : MonoBehaviour
     }
 
     public void ReplayCurrentBGM()
+{
+    if (currentBGM != null)
     {
-        if (currentBGM != null)
-        {
-            PlaySelectBGM(currentBGM);
-        }
+        PlaySelectBGM(currentBGM);
+        StartDisableCoroutine(currentBGM.length);
     }
+}
 
     public void RestartBGM()
     {
@@ -73,14 +76,25 @@ public class AudioManager : MonoBehaviour
     {
         yield return new WaitForSeconds(duration);
 
-        // BGM이 끝나면 MusicSheet를 비활성화
-        // 여기에 MusicSheet 게임 오브젝트를 찾아서 비활성화하는 코드를 넣으세요.
         MusicSheet musicSheet = FindObjectOfType<MusicSheet>();
         if (musicSheet != null)
         {
             musicSheet.gameObject.SetActive(false);
+            musicSheet.ResetMusicSheetImagePosition();
+            musicSheet.ResetNotePosition();
         }
     }
 
+    // 코루틴을 시작하는 함수
+    private void StartDisableCoroutine(float duration)
+    {
+        // 기존의 코루틴이 실행 중이라면 중지
+        if (disableCoroutine != null)
+        {
+            StopCoroutine(disableCoroutine);
+        }
 
+        // 새로운 코루틴 시작
+        disableCoroutine = StartCoroutine(DisableMusicSheetAfterBGMEnds(duration));
+    }
 }

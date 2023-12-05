@@ -1943,7 +1943,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8371909380a776e4a8abb80bdfe5e402, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 43e59c5804705aa4794c586b6410b8a2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2712,7 +2712,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 329b13a293af54a48853ce485d0d6260, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3738,6 +3738,9 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1502630848}
+  - {fileID: 909808472}
+  - {fileID: 809468925}
+  - {fileID: 1736622836}
   m_Father: {fileID: 1455574924}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3866,21 +3869,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 629dd9ed5a4fd2b40a88b3f8833c448f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicSheet: {fileID: 775668605}
   songList:
-  - name: "\uBA85\uC0C1\uD14C\uC2A4\uD2B8"
-    composer: "\uBA85\uC0C1\uC784"
-    musicXMLFile: {fileID: 0}
-    sprite: {fileID: 21300000, guid: 329b13a293af54a48853ce485d0d6260, type: 3}
-    musicSheetSprite: {fileID: 0}
-    musicSheetSprite2: {fileID: 0}
-    audioClip: {fileID: 0}
-  - name: "\uD560\uC544\uBC84\uC9C0\uC758\uB0A1\uC740\uC2DC\uACC4"
-    composer: "\uD5E8\uB9AC \uD074\uB808\uC774 \uC6CC\uD06C"
-    musicXMLFile: {fileID: 4900000, guid: 57514e91d1ff87f4ba9586b7fe763674, type: 3}
-    sprite: {fileID: 21300000, guid: 7eaa9bdf354958d4cb3f04f3aabf9244, type: 3}
-    musicSheetSprite: {fileID: 0}
-    musicSheetSprite2: {fileID: 0}
-    audioClip: {fileID: 8300000, guid: 8428fcd0524056e41a37ba45039e83e8, type: 3}
   - name: "\uACE0\uD5A5\uC758\uBD04"
     composer: "\uC774\uC6D0\uC218"
     musicXMLFile: {fileID: 4900000, guid: 44d3e64be18344d4a90b32b414a87836, type: 3}
@@ -3888,18 +3878,11 @@ MonoBehaviour:
     musicSheetSprite: {fileID: 0}
     musicSheetSprite2: {fileID: 0}
     audioClip: {fileID: 8300000, guid: 6baee3f07d96df44dae3c59a3cda9fde, type: 3}
-  - name: "\uD14C\uC2A4\uD2B81"
-    composer: "\uC774\uC0C1\uC6B1"
-    musicXMLFile: {fileID: 0}
-    sprite: {fileID: 21300000, guid: bbfe0d6f965ad5a45bcd87d2a4b93e2d, type: 3}
-    musicSheetSprite: {fileID: 0}
-    musicSheetSprite2: {fileID: 0}
-    audioClip: {fileID: 0}
   txtSongName: {fileID: 2063274703}
   txtSongComposer: {fileID: 755736120}
   imgDisk: {fileID: 2066106427}
   imgBackground: {fileID: 1934925431}
-  TitleMenu: {fileID: 1794113720}
+  goGenreSelect: {fileID: 1794113720}
   GoMusicSheet: {fileID: 775668601}
   musicSheetImage: {fileID: 0}
 --- !u!114 &720264254
@@ -4356,6 +4339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   measureTime: 0
+  isNoteMoving: 1
   selectMenu: {fileID: 1751866458}
   txtSongName: {fileID: 2115185614}
   txtComposerName: {fileID: 1133473664}
@@ -4364,6 +4348,85 @@ MonoBehaviour:
   musicSheetImage2: {fileID: 988423649}
   goPauseUi: {fileID: 1455574923}
   note: {fileID: 623350131}
+--- !u!1 &809468924
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 809468925}
+  - component: {fileID: 809468927}
+  - component: {fileID: 809468926}
+  m_Layer: 5
+  m_Name: ResumText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &809468925
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809468924}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 709338668}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 170, y: -129}
+  m_SizeDelta: {x: 400, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &809468926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809468924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 30
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 50
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "\uC7AC\uC0DD"
+--- !u!222 &809468927
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809468924}
+  m_CullTransparentMesh: 1
 --- !u!1 &816166061
 GameObject:
   m_ObjectHideFlags: 0
@@ -4421,7 +4484,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 329b13a293af54a48853ce485d0d6260, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4762,6 +4825,85 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 909102051}
+  m_CullTransparentMesh: 1
+--- !u!1 &909808471
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 909808472}
+  - component: {fileID: 909808474}
+  - component: {fileID: 909808473}
+  m_Layer: 5
+  m_Name: SelectText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &909808472
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909808471}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 709338668}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -551, y: -129}
+  m_SizeDelta: {x: 400, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &909808473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909808471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 30
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 50
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "\uACE1 \uC120\uD0DD\uD654\uBA74"
+--- !u!222 &909808474
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909808471}
   m_CullTransparentMesh: 1
 --- !u!1 &915737779
 GameObject:
@@ -5473,7 +5615,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 329b13a293af54a48853ce485d0d6260, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5679,40 +5821,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 629dd9ed5a4fd2b40a88b3f8833c448f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicSheet: {fileID: 775668605}
   songList:
-  - name: "\uB3D9\uC694\uD14C\uC2A4\uD2B8"
-    composer: "\uB3D9\uC694\uC784"
-    musicXMLFile: {fileID: 0}
-    sprite: {fileID: 21300000, guid: 329b13a293af54a48853ce485d0d6260, type: 3}
-    musicSheetSprite: {fileID: 0}
+  - name: "\uB8E8\uB3CC\uD504 \uC0AC\uC2B4 \uCF54"
+    composer: "\uC870\uB2C8 \uB9C8\uD06C\uC2A4"
+    musicXMLFile: {fileID: 4900000, guid: c32d77c7f9201944cb2d1f35cbaf7684, type: 3}
+    sprite: {fileID: 21300000, guid: 345441c093c0dba47aa6f21118010bd2, type: 3}
+    musicSheetSprite: {fileID: 21300000, guid: d78bd9b81a9d82447ac0daa4e1862321, type: 3}
     musicSheetSprite2: {fileID: 0}
-    audioClip: {fileID: 0}
-  - name: "\uD560\uC544\uBC84\uC9C0\uC758\uB0A1\uC740\uC2DC\uACC4"
-    composer: "\uD5E8\uB9AC \uD074\uB808\uC774 \uC6CC\uD06C"
-    musicXMLFile: {fileID: 4900000, guid: 57514e91d1ff87f4ba9586b7fe763674, type: 3}
-    sprite: {fileID: 21300000, guid: 7eaa9bdf354958d4cb3f04f3aabf9244, type: 3}
-    musicSheetSprite: {fileID: 0}
-    musicSheetSprite2: {fileID: 0}
-    audioClip: {fileID: 8300000, guid: 8428fcd0524056e41a37ba45039e83e8, type: 3}
-  - name: "\uACE0\uD5A5\uC758\uBD04"
-    composer: "\uC774\uC6D0\uC218"
-    musicXMLFile: {fileID: 4900000, guid: 44d3e64be18344d4a90b32b414a87836, type: 3}
-    sprite: {fileID: 21300000, guid: bbfe0d6f965ad5a45bcd87d2a4b93e2d, type: 3}
-    musicSheetSprite: {fileID: 0}
-    musicSheetSprite2: {fileID: 0}
-    audioClip: {fileID: 8300000, guid: 6baee3f07d96df44dae3c59a3cda9fde, type: 3}
-  - name: "\uD14C\uC2A4\uD2B81"
-    composer: "\uC774\uC0C1\uC6B1"
-    musicXMLFile: {fileID: 0}
-    sprite: {fileID: 21300000, guid: bbfe0d6f965ad5a45bcd87d2a4b93e2d, type: 3}
-    musicSheetSprite: {fileID: 0}
-    musicSheetSprite2: {fileID: 0}
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 072d262dce002bc4ebc87d4bf0286953, type: 3}
   txtSongName: {fileID: 317838519}
   txtSongComposer: {fileID: 1477011378}
   imgDisk: {fileID: 964302266}
   imgBackground: {fileID: 1516378625}
-  TitleMenu: {fileID: 1794113720}
+  goGenreSelect: {fileID: 1794113720}
   GoMusicSheet: {fileID: 775668601}
   musicSheetImage: {fileID: 0}
 --- !u!114 &1022597556
@@ -7762,7 +7884,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stopMusicSheet: {fileID: 775668601}
-  goSelectMenu: {fileID: 1751866456}
   musicSheet: {fileID: 775668605}
 --- !u!1 &1465736305
 GameObject:
@@ -9917,6 +10038,85 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1736622835
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1736622836}
+  - component: {fileID: 1736622838}
+  - component: {fileID: 1736622837}
+  m_Layer: 5
+  m_Name: ReplayText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1736622836
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1736622835}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 709338668}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 781, y: -129}
+  m_SizeDelta: {x: 400, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1736622837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1736622835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 30
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 50
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "\uB2E4\uC2DC\uC7AC\uC0DD"
+--- !u!222 &1736622838
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1736622835}
+  m_CullTransparentMesh: 1
 --- !u!1 &1751866456
 GameObject:
   m_ObjectHideFlags: 0
@@ -9969,6 +10169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 629dd9ed5a4fd2b40a88b3f8833c448f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicSheet: {fileID: 775668605}
   songList:
   - name: "\uC0AC\uB791\uC744 \uD588\uB2E4"
     composer: iKON
@@ -9977,32 +10178,11 @@ MonoBehaviour:
     musicSheetSprite: {fileID: 21300000, guid: ddd4477ff63ec4948b3c873b06f22635, type: 3}
     musicSheetSprite2: {fileID: 0}
     audioClip: {fileID: 8300000, guid: 755d6a24176f8fd479de98860f87c5ad, type: 3}
-  - name: "\uD560\uC544\uBC84\uC9C0\uC758\uB0A1\uC740\uC2DC\uACC4"
-    composer: "\uD5E8\uB9AC \uD074\uB808\uC774 \uC6CC\uD06C"
-    musicXMLFile: {fileID: 4900000, guid: 57514e91d1ff87f4ba9586b7fe763674, type: 3}
-    sprite: {fileID: 21300000, guid: 7eaa9bdf354958d4cb3f04f3aabf9244, type: 3}
-    musicSheetSprite: {fileID: 0}
-    musicSheetSprite2: {fileID: 0}
-    audioClip: {fileID: 8300000, guid: 8428fcd0524056e41a37ba45039e83e8, type: 3}
-  - name: "\uACE0\uD5A5\uC758\uBD04"
-    composer: "\uC774\uC6D0\uC218"
-    musicXMLFile: {fileID: 4900000, guid: 44d3e64be18344d4a90b32b414a87836, type: 3}
-    sprite: {fileID: 21300000, guid: bbfe0d6f965ad5a45bcd87d2a4b93e2d, type: 3}
-    musicSheetSprite: {fileID: 0}
-    musicSheetSprite2: {fileID: 0}
-    audioClip: {fileID: 8300000, guid: 6baee3f07d96df44dae3c59a3cda9fde, type: 3}
-  - name: "\uD14C\uC2A4\uD2B81"
-    composer: "\uC774\uC0C1\uC6B1"
-    musicXMLFile: {fileID: 0}
-    sprite: {fileID: 21300000, guid: bbfe0d6f965ad5a45bcd87d2a4b93e2d, type: 3}
-    musicSheetSprite: {fileID: 0}
-    musicSheetSprite2: {fileID: 0}
-    audioClip: {fileID: 0}
   txtSongName: {fileID: 2100484501}
   txtSongComposer: {fileID: 1521564431}
   imgDisk: {fileID: 816166063}
   imgBackground: {fileID: 1124117673}
-  TitleMenu: {fileID: 1794113720}
+  goGenreSelect: {fileID: 1794113720}
   GoMusicSheet: {fileID: 775668601}
   musicSheetImage: {fileID: 0}
 --- !u!114 &1751866459
@@ -11403,6 +11583,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 629dd9ed5a4fd2b40a88b3f8833c448f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicSheet: {fileID: 775668605}
   songList:
   - name: "\uB9CC\uC655\uC758 \uC655 \uB0B4 \uC8FC\uAED8\uC11C"
     composer: "\uC0C8 \uCC2C\uC1A1\uAC00"
@@ -11411,32 +11592,18 @@ MonoBehaviour:
     musicSheetSprite: {fileID: 21300000, guid: ef14a7b86b7e1954db377fd1af09964b, type: 3}
     musicSheetSprite2: {fileID: 21300000, guid: d3996b950e973fd4caed577b1aea6ee6, type: 3}
     audioClip: {fileID: 8300000, guid: 3bbbef25734f534468ce64262f57d349, type: 3}
-  - name: "\uD560\uC544\uBC84\uC9C0\uC758\uB0A1\uC740\uC2DC\uACC4"
-    composer: "\uD5E8\uB9AC \uD074\uB808\uC774 \uC6CC\uD06C"
-    musicXMLFile: {fileID: 4900000, guid: 57514e91d1ff87f4ba9586b7fe763674, type: 3}
-    sprite: {fileID: 21300000, guid: 7eaa9bdf354958d4cb3f04f3aabf9244, type: 3}
-    musicSheetSprite: {fileID: 0}
+  - name: "\uD06C\uB9AC\uC2A4\uB9C8\uC2A4\uC5D0\uB294 \uCD95\uBCF5\uC744"
+    composer: "\uAE40\uD604\uCCA0"
+    musicXMLFile: {fileID: 4900000, guid: 9f11c4e1aba1d5b4d8f8df354ac2105a, type: 3}
+    sprite: {fileID: 21300000, guid: a602e918f52bc084fa648eebd32359da, type: 3}
+    musicSheetSprite: {fileID: 21300000, guid: bc34ab01f9391db42aa93d3697238479, type: 3}
     musicSheetSprite2: {fileID: 0}
-    audioClip: {fileID: 8300000, guid: 8428fcd0524056e41a37ba45039e83e8, type: 3}
-  - name: "\uACE0\uD5A5\uC758\uBD04"
-    composer: "\uC774\uC6D0\uC218"
-    musicXMLFile: {fileID: 4900000, guid: 44d3e64be18344d4a90b32b414a87836, type: 3}
-    sprite: {fileID: 21300000, guid: bbfe0d6f965ad5a45bcd87d2a4b93e2d, type: 3}
-    musicSheetSprite: {fileID: 0}
-    musicSheetSprite2: {fileID: 0}
-    audioClip: {fileID: 8300000, guid: 6baee3f07d96df44dae3c59a3cda9fde, type: 3}
-  - name: "\uD14C\uC2A4\uD2B81"
-    composer: "\uC774\uC0C1\uC6B1"
-    musicXMLFile: {fileID: 0}
-    sprite: {fileID: 21300000, guid: bbfe0d6f965ad5a45bcd87d2a4b93e2d, type: 3}
-    musicSheetSprite: {fileID: 0}
-    musicSheetSprite2: {fileID: 0}
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 0733f8a8278795e47b9a3e4f198b005c, type: 3}
   txtSongName: {fileID: 645273195}
   txtSongComposer: {fileID: 351798922}
   imgDisk: {fileID: 471522588}
   imgBackground: {fileID: 1691012815}
-  TitleMenu: {fileID: 1794113720}
+  goGenreSelect: {fileID: 1794113720}
   GoMusicSheet: {fileID: 775668601}
   musicSheetImage: {fileID: 0}
 --- !u!114 &2002007218
@@ -11757,7 +11924,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 329b13a293af54a48853ce485d0d6260, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

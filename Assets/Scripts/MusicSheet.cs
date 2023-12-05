@@ -11,10 +11,10 @@ public class MusicSheet : MonoBehaviour
     private int maxMeasureNumber = 0;
     private int bpm = 0;
     private bool isPaused = false;
-    private bool isNoteMoving = true;
+    public bool isNoteMoving = true;
     private Vector3 initialMusicSheetPosition; //악보 초기 위치를 저장하는 변수
     private Vector3 initialMusicSheetPosition2; //악보 초기 위치를 저장하는 변수
-    private Vector3 initialNotePosition; //노트 초기 위치를 저장하는 변수
+    private Vector3 initialNotePosition = new Vector3(-800f, 0f, 0f); //노트 초기 위치를 저장하는 변수
 
     private int maxAttributeNumber = 0;
     private float noteSpeed;
@@ -129,7 +129,7 @@ public class MusicSheet : MonoBehaviour
         initialMusicSheetPosition = musicSheetImage.transform.position;
         initialMusicSheetPosition2 = musicSheetImage2.transform.position;
 
-        initialNotePosition = note.rectTransform.localPosition;
+        initialNotePosition = new Vector3(-800f, 199f, 0f);
     }
 
     void DelayedBeat4Bpm60()
@@ -262,24 +262,38 @@ public class MusicSheet : MonoBehaviour
         isNoteMoving = true;
     }
 
-    public void GoSelect()
+public void GoSelect()
+{
+    // 게임 값을 초기화하고 기본 상태로 돌아가기
+    measure = 0;
+    measureTime = 0f;
+    isPaused = false;
+    Time.timeScale = 1f;
+    musicSheetImage.transform.position = initialMusicSheetPosition;
+    isNoteMoving = false;
+
+    // 초기 노트 위치로 설정
+    RectTransform noteRectTransform = note.rectTransform;
+    noteRectTransform.localPosition = initialNotePosition;
+
+    // 노래 정지
+    AudioManager.instance.StopBGM();
+}
+
+    // 노트를 저장된 초기위치로 되돌림
+    public void ResetNotePosition()
     {
-        // 게임 값을 초기화하고 기본 상태로 돌아가기
-        measure = 0;
-        measureTime = 0f;
-        isPaused = false;
-        Time.timeScale = 1f;
-        musicSheetImage.transform.position = initialMusicSheetPosition;
-        isNoteMoving = true;
         RectTransform noteRectTransform = note.rectTransform;
         noteRectTransform.localPosition = initialNotePosition;
-        AudioManager.instance.StopBGM();  // 노래 정지
     }
 
-    private void ResetNotePosition()
-{
-    RectTransform noteRectTransform = note.rectTransform;
-    // 노트를 초기 위치로 되돌립니다.
-    noteRectTransform.localPosition = initialNotePosition;
-}
+    // 음악이 종료되면 악보이미지를 초기위치로 되돌림
+    public void ResetMusicSheetImagePosition()
+    {
+        musicSheetImage.transform.position = initialMusicSheetPosition; 
+        if (!gameObject.activeSelf)
+        {
+            musicSheetImage.transform.position = initialMusicSheetPosition;
+        }
+    }
 }

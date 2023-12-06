@@ -103,9 +103,6 @@ public class MusicSheet : MonoBehaviour
     Debug.Log("가장 큰 measure 번호: " + maxMeasureNumber);
     }
 
-
-    
-
     void Update()
     {
         measureTime += Time.deltaTime;
@@ -226,8 +223,6 @@ public class MusicSheet : MonoBehaviour
 
             // 노트를 이동합니다.
             noteRectTransform.localPosition += Vector3.right * noteSpeed * 10f * Time.deltaTime;
-
-            // Debug.Log("Note Speed: " + noteSpeed);
         }
     }
 

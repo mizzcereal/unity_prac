@@ -45,6 +45,9 @@ public class SelectMenu : MonoBehaviour
         AudioManager.instance.StopBGM(); 
         Invoke("EnableNoteMoving", 3f);
         Invoke("PlaySelectedBGM", 3f); // 선택한 노래를 처음부터 재생
+
+    // 노트의 위치를 초기 위치로 되돌림
+        FindObjectOfType<MusicSheet>().ResetNotePosition();
     }
 
     public void BtnBack()

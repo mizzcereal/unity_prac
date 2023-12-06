@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
-
     [SerializeField] GameObject stopMusicSheet = null;
     private bool isPaused = false;
     public MusicSheet musicSheet; // Inspector에서 MusicSheet를 연결해줘야 함
@@ -13,6 +12,7 @@ public class PauseMenu : MonoBehaviour
     {
         if (musicSheet != null)
         {
+            AudioManager.instance.StopDisableCoroutine(); // 중지
             musicSheet.Restart();
         }
         else
@@ -28,6 +28,7 @@ public class PauseMenu : MonoBehaviour
 
         if (musicSheet != null)
         {
+            AudioManager.instance.StopDisableCoroutine(); // 중지
             musicSheet.ResumePlaying(); 
         }
         else
@@ -42,6 +43,7 @@ public class PauseMenu : MonoBehaviour
         stopMusicSheet.SetActive(false);        
        if (musicSheet != null)
         {
+            AudioManager.instance.StopDisableCoroutine(); // 중지
             musicSheet.GoSelect(); 
         }
     }

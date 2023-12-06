@@ -162,8 +162,8 @@ public class MusicSheet : MonoBehaviour
             }
             if (measure % 4 == 0 && measure != 8) // Check if measure is a multiple of 4
             {
-                musicSheetImage.transform.position += new Vector3(0f, 300f, 0f);
-                musicSheetImage2.transform.position += new Vector3(0f, 300f, 0f);
+                musicSheetImage.transform.position += new Vector3(0f, 390f, 0f);
+                musicSheetImage2.transform.position += new Vector3(0f, 390f, 0f);
                 ResetNotePosition();
             }
         }
@@ -185,7 +185,7 @@ public class MusicSheet : MonoBehaviour
             }
             if (measure % 4 == 0 && measure != 32) // Check if measure is a multiple of 4
             {
-                musicSheetImage.transform.position += new Vector3(0f, 300f, 0f);
+                musicSheetImage.transform.position += new Vector3(0f, 390f, 0f);
                 ResetNotePosition();
             }
         }
@@ -207,8 +207,8 @@ public class MusicSheet : MonoBehaviour
             }
             if (measure % 4 == 0 && measure != 32) // Check if measure is a multiple of 4
             {
-                musicSheetImage.transform.position += new Vector3(0f, 300f, 0f);
-                musicSheetImage2.transform.position += new Vector3(0f, 300f, 0f);
+                musicSheetImage.transform.position += new Vector3(0f, 390f, 0f);
+                musicSheetImage2.transform.position += new Vector3(0f, 390f, 0f);
                 ResetNotePosition();
             }
         }
@@ -290,5 +290,11 @@ public void GoSelect()
         {
             musicSheetImage.transform.position = initialMusicSheetPosition;
         }
+    }
+    public void ResetMeasure()
+    {
+        measure = 0;
+    measureTime = 0f;
+    isPaused = false;
     }
 }

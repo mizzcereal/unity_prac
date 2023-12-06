@@ -51,14 +51,23 @@ public class AudioManager : MonoBehaviour
     }
 }
 
-    public void RestartBGM()
+public void RestartBGM()
+{
+    if (currentBGM != null)
     {
-        if (currentBGM != null)
+        // 이전에 시작한 코루틴을 중지
+        if (disableCoroutine != null)
         {
-            PlaySelectBGM(currentBGM);
+            StopCoroutine(disableCoroutine);
         }
-    }
 
+        // 현재 BGM을 멈추고 재생
+        PlaySelectBGM(currentBGM);
+
+        // DisableMusicSheetAfterBGMEnds 코루틴 시작
+        StartDisableCoroutine(currentBGM.length);
+    }
+}
     public void PauseBGM()
     {
         if (bgmPlayer.isPlaying)
@@ -74,16 +83,19 @@ public class AudioManager : MonoBehaviour
     
     private IEnumerator DisableMusicSheetAfterBGMEnds(float duration)
     {
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSeconds(duration + 3f); // BGM 재생 시간 + 3초 대기
 
         MusicSheet musicSheet = FindObjectOfType<MusicSheet>();
         if (musicSheet != null)
         {
-            musicSheet.gameObject.SetActive(false);
-            musicSheet.ResetMusicSheetImagePosition();
             musicSheet.ResetNotePosition();
+            musicSheet.ResetMusicSheetImagePosition();
+            musicSheet.ResetMeasure(); 
+            musicSheet.gameObject.SetActive(false);
         }
     }
+
+    
 
     // 코루틴을 시작하는 함수
     private void StartDisableCoroutine(float duration)
@@ -96,5 +108,13 @@ public class AudioManager : MonoBehaviour
 
         // 새로운 코루틴 시작
         disableCoroutine = StartCoroutine(DisableMusicSheetAfterBGMEnds(duration));
+    }
+
+    public void StopDisableCoroutine()
+    {
+        if (disableCoroutine != null)
+        {
+            StopCoroutine(disableCoroutine);
+        }
     }
 }
